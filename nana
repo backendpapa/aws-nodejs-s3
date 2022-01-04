@@ -1,0 +1,24 @@
+```
+app.post('/update',(req,res)=>{
+  function putObjectToS3(data, nameOfFile) {
+    
+    
+    var params = {
+        Bucket : "dfinitybucket",
+        Key : "sample2.json",
+        Body : data
+    }
+    s3.putObject(params, function(err, data) {
+      if (err) console.log(err, err.stack); 
+      else     console.log("Put to s3 should have worked: " + data);           
+    });
+  }
+
+  var jsonOutput = JSON.stringify({name:"Akeju",age:22});
+
+console.log(jsonOutput);
+
+putObjectToS3(jsonOutput, "myData")
+
+})
+```
